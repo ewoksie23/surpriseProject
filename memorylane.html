@@ -2543,7 +2543,53 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <audio id="birthday-song" loop="">
+        <source src="https://raw.githubusercontent.com/ewoksie23/surpriseProject/main/inthepool.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+	  <script src="audio.js"></script>
+    <script>
+      // Play birthday song
+        const audio = document.getElementById('birthday-song');
+        const playPauseBtn = document.getElementById('play-pause');
+        const volumeControl = document.getElementById('volume');
+        let isPlaying = false;
 
+        // Set initial volume
+        audio.volume = volumeControl.value;
+
+        // Play audio when page loads but wait a bit
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                audio.play()
+                    .then(() => {
+                        isPlaying = true;
+                        playPauseBtn.innerHTML = '<i class="play-icon">⏸️</i>';
+                    })
+                    .catch(error => {
+                        console.log("Audio play failed due to autoplay restrictions:", error);
+                    });
+            }, 1000);
+        });
+
+        // Play/Pause button
+        playPauseBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                playPauseBtn.innerHTML = '<i class="play-icon">▶️</i>';
+            } else {
+                audio.play();
+                playPauseBtn.innerHTML = '<i class="play-icon">⏸️</i>';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Volume control
+        volumeControl.addEventListener('input', () => {
+            audio.volume = volumeControl.value;
+        });
+    </script>
+    
     <script>
       // Register ScrollTrigger plugin
       gsap.registerPlugin(ScrollTrigger);
