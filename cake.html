@@ -426,25 +426,6 @@
         box-shadow: 0 5px 10px rgba(255, 51, 102, 0.4);
       }
 
-		/* Navigation Button Next Fade in*/
-      .nav-buttonNext {
-        position: fixed;
-        bottom: 30px;
-        right: 0;
-        width: 100%;
-        display: flex;
-		opacity: 0.5;
-        justify-content: space-between;
-        padding: 0 50px;
-        z-index: 50;
-      }
-
-		.nav-buttonNext.show {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
-        animation: bounceIn 0.8s;
-      }
-
       /* Improved Responsive Design */
       @media (max-width: 768px) {
         .cake-container {
@@ -2188,10 +2169,9 @@
     <!-- Navigation Buttons -->
     <div class="nav-buttons" bis_skin_checked="1">
       <button class="btn" onclick="goBack()">◀ Back</button>
+	  <button class="btn" onclick="goNext()">Next Surprise ▶</button>
     </div>
-	  <div class="nav-buttonNext" id="navbuttonNext" bis_skin_checked="1">
-		  <button class="btn" onclick="goNext()">Next Surprise ▶</button>
-	  </div>
+	  
     <audio id="birthday-song" loop="">
         <source src="https://raw.githubusercontent.com/ewoksie23/surpriseProject/main/inthepool.mp3" type="audio/mp3">
         Your browser does not support the audio element.
@@ -2344,7 +2324,6 @@
           if (candlesBlown === totalCandles && !allCandlesBlown) {
             allCandlesBlown = true;
             setTimeout(showWishMessage, 1000);
-			setTimeout(shownavbuttonNext, 1000);
           }
         }
       }
@@ -2391,10 +2370,6 @@
       function showWishMessage() {
         document.getElementById("wishMessage").classList.add("show");
         createFireworks();
-      }
-
-	  function shownavbuttonNext() {
-        document.getElementById("navbuttonNext").classList.add("show");
       }
 
       // Close the wish message
