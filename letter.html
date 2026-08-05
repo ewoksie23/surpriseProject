@@ -534,12 +534,6 @@
     <!-- Music Controls -->
 
     <!-- Audio Elements -->
-    <audio id="click-sound" preload="auto">
-        <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_bb630cc098.mp3?filename=cute-notification-ringtone-1-173850.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="background-music" loop>
-        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=relaxing-145038.mp3" type="audio/mpeg">
-    </audio>
 
     <div class="audio-controls" bis_skin_checked="1">
         <button id="play-pause"><i class="play-icon">▶️</i></button>
@@ -551,18 +545,8 @@
         Your browser does not support the audio element.
     </audio>
 	<script src="audio.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.5.1/confetti.browser.min.js"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Fade in animation
-            setTimeout(() => {
-                document.querySelector('.container').style.opacity = 1;
-            }, 500);
-
-            // Play birthday song
+	<script>
+		     // Play birthday song
         const audio = document.getElementById('birthday-song');
         const playPauseBtn = document.getElementById('play-pause');
         const volumeControl = document.getElementById('volume');
@@ -601,6 +585,17 @@
         volumeControl.addEventListener('input', () => {
             audio.volume = volumeControl.value;
         });
+	</script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.5.1/confetti.browser.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fade in animation
+            setTimeout(() => {
+                document.querySelector('.container').style.opacity = 1;
+            }, 500);
 
         // Function to go to next page
         function goToNextPage() {
@@ -660,10 +655,8 @@
             const surpriseButton = document.getElementById('surprise-button');
             const modalOverlay = document.getElementById('modal-overlay');
             const modalClose = document.getElementById('modal-close');
-            const clickSound = document.getElementById('click-sound');
 
             surpriseButton.addEventListener('click', function() {
-                clickSound.play();
                 modalOverlay.classList.add('active');
                 confetti({
                     particleCount: 100,
