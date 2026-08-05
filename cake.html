@@ -426,6 +426,25 @@
         box-shadow: 0 5px 10px rgba(255, 51, 102, 0.4);
       }
 
+		/* Navigation Button Next Fade in*/
+      .nav-buttonNext {
+        position: fixed;
+        bottom: 30px;
+        left: 0;
+        width: 100%;
+        display: flex;
+		opacity: 0;
+        justify-content: space-between;
+        padding: 0 50px;
+        z-index: 50;
+      }
+
+		.nav-buttonNext.show {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+        animation: bounceIn 0.8s;
+      }
+
       /* Improved Responsive Design */
       @media (max-width: 768px) {
         .cake-container {
