@@ -2344,6 +2344,7 @@
           if (candlesBlown === totalCandles && !allCandlesBlown) {
             allCandlesBlown = true;
             setTimeout(showWishMessage, 1000);
+			setTimeout(showNextButton, 1000);
           }
         }
       }
@@ -2390,6 +2391,10 @@
       function showWishMessage() {
         document.getElementById("wishMessage").classList.add("show");
         createFireworks();
+      }
+
+	  function showNextButton() {
+        document.getElementById("nav-buttonNext").classList.add("show");
       }
 
       // Close the wish message
