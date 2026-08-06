@@ -295,6 +295,16 @@
             font-size: 1.2rem;
         }
 
+		.navigation-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 3rem;
+      	}
+
+		#backButton {
+        background: linear-gradient(45deg, #a485ff, #75c6ff);
+      	}
+
         /* Back Button */
         .back-button {
             display: inline-block;
@@ -463,12 +473,21 @@
                 Click for a Random Surprise! 🎁
             </button>
         </div>
-
-        <div class="navigation">
-            <a href="javascript:history.back()" class="back-button">
-                <i class="fas fa-arrow-left"></i> Back to Birthday Cake
-            </a>
-        </div>
+		<div
+        class="navigation-buttons"
+        style="
+          translate: none;
+          rotate: none;
+          scale: none;
+          opacity: 1;
+          transform: translate(0px, 0px);
+        "
+        bis_skin_checked="1"
+      	>
+			<button id="backButton" class="btn">
+                	<i class="fas fa-arrow-left"></i> Back to Birthday Cake
+			</button>
+		</div>
     </div>
 
     <!-- Modal for Surprise -->
@@ -697,6 +716,10 @@
                 }
                 isMusicPlaying = !isMusicPlaying;
             });
+
+			backButton.addEventListener("click", function () {
+         	 window.location.href = "cake.html"; // Adjust this to your welcome page URL
+        	});
 
             // Helper Functions
             function createFloatingElement(element, index) {
