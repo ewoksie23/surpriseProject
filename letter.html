@@ -632,6 +632,10 @@
                 document.querySelector('.container').style.opacity = 1;
             }, 500);
 
+			backButton.addEventListener("click", function () {
+         	 window.location.href = "cake.html"; // Adjust this to your welcome page URL
+        	});
+
         // Function to go to next page
         function goToNextPage() {
             // Add a bounce effect before navigating
@@ -743,10 +747,6 @@
                 }
                 isMusicPlaying = !isMusicPlaying;
             });
-
-			backButton.addEventListener("click", function () {
-         	 window.location.href = "cake.html"; // Adjust this to your welcome page URL
-        	});
 
             // Helper Functions
             function createFloatingElement(element, index) {
