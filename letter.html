@@ -626,6 +626,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.5.1/confetti.browser.min.js"></script>
 
     <script>
+		const backButton = document.getElementById('backButton');
         document.addEventListener('DOMContentLoaded', function() {
             // Fade in animation
             setTimeout(() => {
@@ -732,7 +733,6 @@
             const musicToggle = document.getElementById('music-toggle');
             const musicIcon = document.getElementById('music-icon');
             const backgroundMusic = document.getElementById('background-music');
-			const backButton = document.getElementById("backButton");
             let isMusicPlaying = false;
 
             musicToggle.addEventListener('click', function() {
