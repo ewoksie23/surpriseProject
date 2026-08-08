@@ -2705,48 +2705,6 @@
         let slideshowInterval;
         let currentSlide = 0;
 
-        // Generate memory cards
-        memories.forEach((memory, index) => {
-          const memoryCard = document.createElement("div");
-          memoryCard.className = "memory-card";
-          memoryCard.style.setProperty(
-            "--rotate",
-            `${memory.rotationAngle}deg`
-          );
-
-          const tapeElement = document.createElement("div");
-          tapeElement.className = "card-tape";
-          tapeElement.style.setProperty(
-            "--rotate",
-            `${memory.rotationAngle * 2}deg`
-          );
-
-          const imgElement = document.createElement("img");
-          imgElement.className = "memory-img";
-          imgElement.src = memory.image;
-          imgElement.alt = `Memory ${index + 1}`;
-
-          const captionElement = document.createElement("div");
-          captionElement.className = "memory-caption";
-          captionElement.textContent = memory.caption;
-
-          const stickerElement = document.createElement("div");
-          stickerElement.className = "card-sticker";
-          stickerElement.innerHTML = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="50" fill="#ff6ec4" />
-                    <text x="50" y="65" font-family="Arial" font-size="40" text-anchor="middle" fill="white">${memory.emoji}</text>
-                </svg>`;
-
-          memoryCard.appendChild(tapeElement);
-          memoryCard.appendChild(imgElement);
-          memoryCard.appendChild(captionElement);
-          memoryCard.appendChild(stickerElement);
-          galleryElement.appendChild(memoryCard);
-        });
-
-        // Make slideshow controls visible
-        document.querySelector(".slideshow-controls").style.opacity = "1";
-
         // Intersection Observer to animate cards as they enter viewport
         const observer = new IntersectionObserver(
           (entries) => {
@@ -2773,53 +2731,6 @@
             card.classList.add("visible");
           }, 500 + index * 150);
         });
-
-        // Fixed slideshow functionality
-        function startSlideshow() {
-          startSlideshowBtn.style.display = "none";
-          pauseSlideshowBtn.style.display = "flex";
-
-          // Clear any existing interval to avoid multiple slideshows
-          if (slideshowInterval) {
-            clearInterval(slideshowInterval);
-          }
-
-          slideshowInterval = setInterval(() => {
-            // Move to next slide
-            currentSlide = (currentSlide + 1) % memories.length;
-
-            // Calculate the scroll position of the current slide
-            const cards = galleryElement.querySelectorAll(".memory-card");
-            if (cards && cards.length > 0 && cards[currentSlide]) {
-              const cardRect = cards[currentSlide].getBoundingClientRect();
-              const galleryRect = galleryElement.getBoundingClientRect();
-
-              // Scroll to center the current card
-              galleryElement.scrollTo({
-                left:
-                  cards[currentSlide].offsetLeft -
-                  galleryRect.width / 2 +
-                  cardRect.width / 2,
-                behavior: "smooth",
-              });
-            }
-          }, 2000); // Change slide every 3 seconds
-        }
-
-        function pauseSlideshow() {
-          pauseSlideshowBtn.style.display = "none";
-          startSlideshowBtn.style.display = "flex";
-
-          // Clear interval to stop slideshow
-          if (slideshowInterval) {
-            clearInterval(slideshowInterval);
-            slideshowInterval = null;
-          }
-        }
-
-        // Event listeners for slideshow controls
-        startSlideshowBtn.addEventListener("click", startSlideshow);
-        pauseSlideshowBtn.addEventListener("click", pauseSlideshow);
 
         // Event listeners for navigation buttons
         backButton.addEventListener("click", function () {
@@ -2875,15 +2786,6 @@
             });
           });
         });
-
-        // Auto scroll to show the gallery
-        setTimeout(() => {
-          const galleryContainer = document.querySelector(".gallery-container");
-          galleryContainer.scrollIntoView({
-            behavior: "smooth",
-            block: "center",
-          });
-        }, 2000);
       });
     </script>
 
