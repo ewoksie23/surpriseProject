@@ -304,6 +304,7 @@
 
         // Set initial volume
         audio.volume = volumeControl.value;
+		audio.play();
 
         // Play audio when page loads but wait a bit
         window.addEventListener('load', () => {
@@ -316,7 +317,7 @@
                     .catch(error => {
                         console.log("Audio play failed due to autoplay restrictions:", error);
                     });
-            }, 100);
+            }, 1000);
         });
 
         // Play/Pause button
